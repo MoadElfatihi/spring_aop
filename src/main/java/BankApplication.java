@@ -1,12 +1,13 @@
+import configration.LoggerConfig;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import service.BankService;
 
 public class BankApplication {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-config.xml");
-       BankService service = (BankService) ctx.getBean("bankService");
-        System.out.println(service);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(LoggerConfig.class);
+        BankService service = (BankService) ctx.getBean("bankService");
+       service.creditAccount();
     }
 }
